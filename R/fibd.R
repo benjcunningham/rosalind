@@ -33,10 +33,10 @@ m <- raw[2]
 a <- 0
 b <- 1
 
-for (i in 1:(n-1)) {
+for (i in 2:n) {
   
-  a <- c(a, a[i] + b[i] - ifelse(i >= m, b[i - m + 1], 0))
-  b <- c(b, ifelse(i > 1, a[i], 0))
+  a <- c(a, a[i - 1] + b[i - 1] - ifelse(i > m, b[i - m], 0))
+  b <- c(b, a[i - 1])
   
 }
 
