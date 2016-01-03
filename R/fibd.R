@@ -17,6 +17,7 @@
 #' Return: The total number of pairs of rabbits that will remain after
 #' the n-th month if all rabbits live for m months.
 
+library(gmp)
 library(magrittr)
 
 f <- 'data/rosalind_fibd.txt'
@@ -35,10 +36,14 @@ b <- 1
 
 for (i in 2:n) {
   
-  a <- c(a, a[i - 1] + b[i - 1] - ifelse(i > m, b[i - m], 0))
-  b <- c(b, a[i - 1])
+  a <-
+    c(a, a[i - 1] + b[i - 1] - if(i > m) b[i - m] else 0) %>%
+    as.bigz()
+  
+  b <- c(as.bigz(b), a[i - 1])
   
 }
 
 (a + b)[n] %>%
+  as.character() %>%
   cat()
