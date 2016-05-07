@@ -1,3 +1,5 @@
+#' Introduction to Random Strings
+#'
 #' An array is a structure containing an ordered collection of objects
 #' (numbers, strings, other arrays, etc.). We let A[k] denote the k-th
 #' value in array A. You may like to think of an array as simply a
